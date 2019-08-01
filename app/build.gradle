@@ -1,0 +1,67 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.0"
+    defaultConfig {
+        applicationId "com.lukasdylan.demokotlinmpp"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/main.kotlin_module'
+        exclude 'META-INF/kotlinx-io.kotlin_module'
+        exclude 'META-INF/atomicfu.kotlin_module'
+        exclude 'META-INF/kotlinx-coroutines-io.kotlin_module'
+        exclude 'META-INF/*.kotlin_module'
+    }
+    androidExtensions {
+        experimental = true
+    }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
+    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
+    implementation "com.google.android.material:material:1.0.0"
+    implementation "io.ktor:ktor-client-logging-jvm:1.2.0"
+    implementation "io.ktor:ktor-client-json-jvm:1.2.0"
+    implementation "io.ktor:ktor-client-okhttp:1.2.0"
+    implementation project(':footballnews-shared-code')
+    implementation "io.ktor:ktor-client-serialization-jvm:1.2.0"
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
